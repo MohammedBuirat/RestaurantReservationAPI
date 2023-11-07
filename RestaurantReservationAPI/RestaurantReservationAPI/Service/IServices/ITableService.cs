@@ -2,7 +2,7 @@
 
 namespace RestaurantReservation.Service.IServices
 {
-    public interface ITableService : Service<Table>, IService<Table>
+    public interface ITableService : IService<Table>
     {
     }
 }
