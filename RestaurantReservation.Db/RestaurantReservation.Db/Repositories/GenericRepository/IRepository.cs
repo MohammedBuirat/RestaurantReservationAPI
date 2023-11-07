@@ -1,4 +1,6 @@
-﻿namespace RestaurantReservation.Db.Repositories.GenericRepository
+﻿using System.Linq.Expressions;
+
+namespace RestaurantReservation.Db.Repositories.GenericRepository
 {
     public interface IRepository<T> where T : class
     {
@@ -13,5 +15,7 @@
         public Task<bool> ExistsAsync(int id);
 
         public Task<List<T>> GetAllAsync();
+
+        public Task<T> GetFirstOrDefaultAsync(Expression<Func<T, bool>> filter);
     }
 }

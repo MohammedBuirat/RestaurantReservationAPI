@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace RestaurantReservation.Db.Repositories.GenericRepository
 {
@@ -46,6 +47,11 @@ namespace RestaurantReservation.Db.Repositories.GenericRepository
         public async Task<List<T>> GetAllAsync()
         {
             return await _dbContext.Set<T>().ToListAsync();
+        }
+
+        public async Task<T> GetFirstOrDefaultAsync(Expression<Func<T, bool>> filter)
+        {
+            return await _dbContext.Set<T>().FirstOrDefaultAsync(filter);
         }
     }
 }
